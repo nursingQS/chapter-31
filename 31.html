@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Nursing Flashcards - Chapter 31: The Child with Endocrine Dysfunction</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 96vh;
+            background: #f7fbff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(121, 85, 72, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #795548;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #5d4037, #795548);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M50,30 L60,40 L70,30 L80,45 L70,60 L50,70 L30,60 L20,45 L30,30 L40,40 Z" fill="white"/><circle cx="50" cy="50" r="18" fill="white"/><path d="M45,40 L55,40 L55,50 L45,50 Z" fill="white"/><polygon points="50,25 55,35 65,30 70,45 60,50 55,45" fill="white"/><circle cx="65" cy="35" r="3" fill="white"/><circle cx="35" cy="35" r="3" fill="white"/></svg>');
+            background-size: 80px 80px;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            position: relative;
+            color: #d7ccc8;
+            line-height: 1.2;
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            color: #bcaaa4;
+            margin-bottom: 8px;
+        }
+        
+        .progress {
+            background: #4e342e;
+            height: 6px;
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #a1887f, #795548);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .section-nav {
+            display: flex;
+            gap: 6px;
+            padding: 8px 10px;
+            background: linear-gradient(135deg, #4e342e, #5d4037);
+            border-bottom: 1px solid #a1887f;
+            flex-shrink: 0;
+            overflow-x: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-btn {
+            padding: 5px 10px;
+            border: 2px solid #a1887f;
+            background: rgba(255, 255, 255, 0.95);
+            color: #4e342e;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .section-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(161, 136, 127, 0.4);
+        }
+        
+        .section-btn.active {
+            background: linear-gradient(135deg, #a1887f, #795548);
+            color: white;
+            border-color: #5d4037;
+            box-shadow: 0 6px 12px rgba(161, 136, 127, 0.5);
+        }
+        
+        .flashcard {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f7fbff;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .question-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #a1887f;
+            box-shadow: 0 4px 8px rgba(121, 85, 72, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .question-icon {
+            background: linear-gradient(135deg, #5d4037, #a1887f);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(93, 64, 55, 0.4);
+        }
+        
+        .question {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #4e342e;
+            flex-grow: 1;
+            font-weight: 500;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        .multiple-select-indicator {
+            background: #0288d1;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 6px;
+            white-space: nowrap;
+            box-shadow: 0 3px 6px rgba(2, 136, 209, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+        }
+        
+        .option {
+            padding: 8px 10px;
+            border: 2px solid #d7ccc8;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            flex-shrink: 0;
+            min-height: 45px;
+        }
+        
+        .option:hover {
+            background: #efebe9;
+            border-color: #a1887f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(161, 136, 127, 0.2);
+        }
+        
+        .option-letter {
+            background: #d7ccc8;
+            color: #4e342e;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            border: 2px solid #a1887f;
+        }
+        
+        /* CORRECT - ALWAYS GREEN */
+        .option.correct {
+            background: #c8e6c9;
+            border-color: #388e3c;
+            color: #1b5e20;
+        }
+        
+        .option.correct .option-letter {
+            background: #388e3c;
+            color: white;
+            border-color: #388e3c;
+        }
+        
+        /* INCORRECT - ALWAYS RED */
+        .option.incorrect {
+            background: #ffcdd2;
+            border-color: #d32f2f;
+            color: #b71c1c;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #d32f2f;
+            color: white;
+            border-color: #d32f2f;
+        }
+        
+        .option.selected {
+            background: #efebe9;
+            border-color: #a1887f;
+            color: #4e342e;
+        }
+        
+        .option.selected .option-letter {
+            background: #a1887f;
+            color: white;
+            border-color: #795548;
+        }
+        
+        .feedback {
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .feedback.correct {
+            background: #c8e6c9;
+            border: 3px solid #388e3c;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: #ffcdd2;
+            border: 3px solid #d32f2f;
+            color: #b71c1c;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: #d7ccc8;
+            border-top: 2px solid #a1887f;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+        
+        .counter {
+            font-weight: bold;
+            color: #4e342e;
+            font-size: 0.9rem;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 2px solid #795548;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5d4037, #a1887f);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(93, 64, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #795548, #5d4037);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(121, 85, 72, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #795548, #5d4037);
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(121, 85, 72, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #0288d1, #01579b);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(2, 136, 209, 0.4);
+        }
+        
+        .rationale {
+            background: linear-gradient(135deg, #efebe9, #d7ccc8);
+            border: 3px solid #795548;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 8px;
+            display: none;
+            box-shadow: 0 4px 12px rgba(121, 85, 72, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+            max-height: 120px;
+        }
+        
+        .rationale.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .rationale h4 {
+            color: #5d4037;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .rationale p {
+            color: #4e342e;
+            line-height: 1.4;
+            font-size: 0.8rem;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stats {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cancel-selection {
+            background: linear-gradient(135deg, #0288d1, #01579b);
+            color: white;
+            margin: 0 auto 8px auto;
+            display: none;
+            box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .cancel-selection:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(2, 136, 209, 0.4);
+        }
+        
+        .cancel-selection.show {
+            display: flex;
+        }
+        
+        .multiple-select-instructions {
+            text-align: center;
+            color: #0288d1;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            background: #efebe9;
+            padding: 6px;
+            border-radius: 8px;
+            border: 2px solid #d7ccc8;
+            flex-shrink: 0;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Remove all scrollbars */
+        .options,
+        .rationale,
+        .container,
+        .flashcard,
+        body {
+            overflow: hidden !important;
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+        
+        .options::-webkit-scrollbar,
+        .rationale::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                height: 98vh;
+            }
+            
+            .section-btn {
+                min-width: 100px;
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+            
+            .header {
+                padding: 10px 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .navigation {
+                padding: 8px 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+            }
+            
+            .counter {
+                order: -1;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 4px;
+                font-size: 0.8rem;
+            }
+            
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .question {
+                font-size: 0.85rem;
+            }
+            
+            .option {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+                min-height: 40px;
+            }
+            
+            .question-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .option-letter {
+                width: 22px;
+                height: 22px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .container {
+                height: 99vh;
+            }
+            
+            .header {
+                padding: 8px 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.1rem;
+            }
+            
+            .header .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .question-container {
+                padding: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .question {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .option {
+                padding: 6px 8px;
+                min-height: 35px;
+                font-size: 0.75rem;
+            }
+            
+            .navigation {
+                padding: 6px 8px;
+            }
+            
+            .rationale {
+                max-height: 80px;
+                padding: 8px;
+            }
+            
+            .feedback {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .option-letter {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .stats {
+                display: none;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .question-container {
+                padding: 8px;
+            }
+            
+            .question-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .option {
+                min-height: 30px;
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+            
+            .option-letter {
+                width: 18px;
+                height: 18px;
+                font-size: 0.65rem;
+            }
+            
+            .btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .rationale {
+                max-height: 60px;
+                padding: 6px;
+            }
+            
+            .rationale p {
+                font-size: 0.7rem;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚕️ Chapter 31: The Child with Endocrine Dysfunction</h1>
+            <div class="subtitle">Endocrine & Hormone Theme - Brown & Beige Colors (Thyroid/Diabetes Focus)</div>
+            <div class="stats">
+                <div class="stat">📚 44 Questions</div>
+                <div class="stat">🎯 Immediate Feedback</div>
+                <div class="stat">🩺 Diabetes Focus</div>
+                <div class="stat">⚖️ Hormone Balance</div>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="section-nav">
+            <button class="section-btn active" onclick="setSection('multiple-choice')">Multiple Choice (44)</button>
+            <button class="section-btn" onclick="setSection('multiple-response')">Multiple Response (13)</button>
+            <button class="section-btn" onclick="setSection('dosage-calc')">Dosage Calculations (5)</button>
+            <button class="section-btn" onclick="setSection('all')">All Mixed (62)</button>
+        </div>
+        
+        <div class="flashcard">
+            <div class="question-container">
+                <div class="question-icon" id="questionNumber">1</div>
+                <div class="question" id="question"></div>
+                <div class="multiple-select-indicator" id="multipleSelectIndicator" style="display: none;">Multiple Answers</div>
+            </div>
+            
+            <div class="multiple-select-instructions" id="multipleSelectInstructions" style="display: none;">
+                💡 Select ALL correct answers
+            </div>
+            
+            <div class="options" id="options"></div>
+            
+            <button class="btn cancel-selection" id="cancelBtn" onclick="cancelSelection()">
+                🔄 Reset
+            </button>
+            
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>💡 Rationale:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+                ⬅️ Prev
+            </button>
+            <div class="counter" id="counter">1/44</div>
+            <button class="btn btn-warning" id="submitBtn" onclick="submitAnswer()" style="display: none;">
+                ✅ Submit
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Chapter 31 Data - The Child with Endocrine Dysfunction
+        const sections = {
+            'multiple-choice': [
+                {
+                    question: "Homeostasis in the body is maintained by what is collectively known as the neuroendocrine system. What is the name of the nervous system that is involved?",
+                    options: [
+                        "Central",
+                        "Skeletal",
+                        "Peripheral",
+                        "Autonomic"
+                    ],
+                    correct: 3,
+                    rationale: "The autonomic nervous system (composed of the sympathetic and parasympathetic systems) controls involuntary functions. In combination with the endocrine system, it maintains homeostasis. The central, skeletal, and peripheral subdivisions of the nervous system are not part of the neuroendocrine system."
+                },
+                {
+                    question: "A child with hypopituitarism is being started on growth hormone (GH) therapy. Nursing considerations should be based on which knowledge?",
+                    options: [
+                        "Therapy is most successful if it is started during adolescence.",
+                        "Replacement therapy requires daily subcutaneous injections.",
+                        "Hormonal supplementation will be required throughout childs lifetime.",
+                        "Treatment is considered successful if children attain full stature by adolescence."
+                    ],
+                    correct: 1,
+                    rationale: "Additional support is required for children who require hormone replacement therapy, such as preparation for daily subcutaneous injections and education for self-management during the school-age years. Young children, obese children, and those who are severely GH deficient have the best response to therapy. Replacement therapy is not needed after attaining final height. The children are no longer GH deficient. When therapy is successful, children can attain their actual or near-final adult height at a slower rate than their peers."
+                },
+                {
+                    question: "A child with growth hormone (GH) deficiency is receiving GH therapy. When is the best time for the GH to be administered?",
+                    options: [
+                        "At bedtime",
+                        "After meals",
+                        "Before meals",
+                        "After arising in morning"
+                    ],
+                    correct: 0,
+                    rationale: "Injections are best given at bedtime to more closely approximate the physiologic release of GH. After meals, before meals, and after arising in the morning do not parallel the physiologic release of the hormone."
+                },
+                {
+                    question: "What is a condition that can result if hypersecretion of growth hormone (GH) occurs after epiphyseal closure?",
+                    options: [
+                        "Cretinism",
+                        "Dwarfism",
+                        "Gigantism",
+                        "Acromegaly"
+                    ],
+                    correct: 3,
+                    rationale: "Excess GH after closure of the epiphyseal plates results in acromegaly. Cretinism is associated with hypothyroidism. Dwarfism is the condition of being abnormally small. Gigantism occurs when there is hypersecretion of GH before the closure of the epiphyseal plates."
+                },
+                {
+                    question: "Peripheral precocious puberty (PPP) differs from central precocious puberty (CPP) in which manner?",
+                    options: [
+                        "PPP results from a central nervous system (CNS) insult.",
+                        "PPP occurs more frequently in girls.",
+                        "PPP may be viewed as a variation in sexual development.",
+                        "PPP results from hormonal stimulation of the hypothalamic gonadotropin-releasing hormone (Gn-RH)."
+                    ],
+                    correct: 2,
+                    rationale: "PPP may be viewed as a variation in sexual development. PPP results from hormone stimulation other than the hypothalamic Gn-RH. Isolated manifestations of secondary sexual development occur. PPP can be missed if these changes are viewed as variations in pubertal onset. CPP results from CNS insult, occurs more frequently in girls, and results from hormonal stimulation of the hypothalamic Gn-RH."
+                },
+                {
+                    question: "A child will start treatment for central precocious puberty. What synthetic hormone will be injected?",
+                    options: [
+                        "Thyrotropin",
+                        "Gonadotropins",
+                        "Somatotropic hormone",
+                        "Luteinizing hormone-releasing hormone"
+                    ],
+                    correct: 3,
+                    rationale: "Precocious puberty of central origin is treated with monthly subcutaneous injections of luteinizing hormone-releasing hormone, which regulates pituitary secretions. Thyrotropin, gonadotropins, and somatotropic hormone are not the appropriate therapies for precocious puberty."
+                },
+                {
+                    question: "The nurse is planning care for a child recently diagnosed with diabetes insipidus (DI). What intervention should be included?",
+                    options: [
+                        "Encourage the child to wear medical identification.",
+                        "Discuss with the child and family ways to limit fluid intake.",
+                        "Teach the child and family how to do required urine testing.",
+                        "Reassure the child and family that this is usually not a chronic or life-threatening illness."
+                    ],
+                    correct: 0,
+                    rationale: "DI is a potentially life-threatening disorder if the voluntary demand for fluid is suppressed or the child does not have access to fluids. Medical alert identification should be worn. Fluid intake is not restricted in children with DI. The child is unable to concentrate urine and can rapidly become dehydrated. Fluid intake may be limited during diagnosis, when the lack of intake will result in decreased urinary output and dehydration. Urine testing is not required in DI. Changes in body weight provide information about approximate fluid balance. This is a lifelong disorder that requires supplemental vasopressin throughout life."
+                },
+                {
+                    question: "Intranasal administration of desmopressin acetate (DDAVP) is used to treat which condition?",
+                    options: [
+                        "Hypopituitarism",
+                        "Diabetes insipidus (DI)",
+                        "Syndrome of inappropriate antidiuretic hormone (SIADH)",
+                        "Acute adrenocortical insufficiency"
+                    ],
+                    correct: 1,
+                    rationale: "DDAVP is the treatment of choice for DI. It is administered intranasally through a flexible tube. The childs response pattern is variable, with effectiveness lasting from 6 to 24 hours."
+                },
+                {
+                    question: "What nursing care should be included for a child diagnosed with syndrome of inappropriate antidiuretic hormone (SIADH)?",
+                    options: [
+                        "Maintain the child NPO (nothing by mouth).",
+                        "Turn the child frequently.",
+                        "Restrict fluids.",
+                        "Encourage fluids."
+                    ],
+                    correct: 2,
+                    rationale: "Increased secretion of ADH causes the kidney to reabsorb water, which increases fluid volume and decreases serum osmolarity with a progressive reduction in sodium concentration. The immediate management of the child is to restrict fluids but not food. Frequently turning the child is not necessary unless the child is unresponsive. Encouraging fluids will worsen the childs condition."
+                },
+                {
+                    question: "What is a common clinical manifestation of juvenile hypothyroidism?",
+                    options: [
+                        "Insomnia",
+                        "Diarrhea",
+                        "Dry skin",
+                        "Rapid growth"
+                    ],
+                    correct: 2,
+                    rationale: "Dry skin, mental decline, and myxedematous skin changes are associated with juvenile hypothyroidism. Children with hypothyroidism often have sleepiness, constipation, and decelerated growth."
+                },
+                {
+                    question: "A goiter is an enlargement or hypertrophy of which gland?",
+                    options: [
+                        "Thyroid",
+                        "Adrenal",
+                        "Anterior pituitary",
+                        "Posterior pituitary"
+                    ],
+                    correct: 0,
+                    rationale: "A goiter is an enlargement or hypertrophy of the thyroid gland. Goiter is not associated with the adrenal, anterior pituitary, or posterior pituitary secretory organs."
+                },
+                {
+                    question: "Exophthalmos (protruding eyeballs) may occur in children with which condition?",
+                    options: [
+                        "Hypothyroidism",
+                        "Hyperthyroidism",
+                        "Hypoparathyroidism",
+                        "Hyperparathyroidism"
+                    ],
+                    correct: 1,
+                    rationale: "Exophthalmos is associated with hyperthyroidism. Hypothyroidism, hypoparathyroidism, and hyperparathyroidism are not associated with exophthalmos."
+                },
+                {
+                    question: "A child is receiving propylthiouracil for the treatment of hyperthyroidism (Graves disease). The parents and child should be taught to recognize and report which sign or symptom immediately?",
+                    options: [
+                        "Fatigue",
+                        "Weight loss",
+                        "Fever, sore throat",
+                        "Upper respiratory tract infection"
+                    ],
+                    correct: 2,
+                    rationale: "Children being treated with propylthiouracil must be carefully monitored for the side effects of the drug. Parents must be alerted that sore throat and fever accompany the grave complication of leukopenia. These symptoms should be immediately reported. Fatigue and weight loss are manifestations of hyperthyroidism. Their presence may indicate that the drug is not effective but does not require immediate evaluation. Upper respiratory tract infections are most likely viral in origin and not a sign of leukopenia."
+                },
+                {
+                    question: "The school nurse practitioner is consulted by a fifth-grade teacher about a student who has become increasingly inattentive and hyperactive in the classroom. The nurse notes that the childs weight has changed from the 50th percentile to the 30th percentile. The nurse is concerned about possible hyperthyroidism. What additional sign or symptom should the nurse anticipate?",
+                    options: [
+                        "Skin that is cool and dry",
+                        "Blurred vision and loss of acuity",
+                        "Running and being active during recess",
+                        "Decreased appetite and food intake"
+                    ],
+                    correct: 1,
+                    rationale: "Visual disturbances such as loss of visual acuity and blurred vision are associated with hyperthyroidism. They may occur before the actual onset of other symptoms. The childs skin is usually warm, flushed, and moist. Although the signs of hyperthyroidism include excessive motion, irritability, hyperactivity, short attention span, and emotional lability, these children are easily fatigued and require frequent rest periods. Children with hyperthyroidism have increased food intake. Even with voracious appetites, weight loss occurs."
+                },
+                {
+                    question: "A child with hypoparathyroidism is receiving vitamin D therapy. The parents should be advised to watch for which signs or symptoms of vitamin D toxicity?",
+                    options: [
+                        "Headache and seizures",
+                        "Weakness and lassitude",
+                        "Anorexia and insomnia",
+                        "Physical restlessness, voracious appetite without weight gain"
+                    ],
+                    correct: 1,
+                    rationale: "Vitamin D toxicity can be a serious consequence of therapy. Parents are advised to watch for weakness, fatigue, lassitude, headache, nausea, vomiting, and diarrhea. Renal impairment is manifested through polyuria, polydipsia, and nocturia. Headaches may be a sign of vitamin D toxicity, but seizures are not. Anorexia and insomnia are not characteristic of vitamin D toxicity. Physical restlessness and a voracious appetite with weight loss are manifestations of hyperthyroidism."
+                },
+                {
+                    question: "Glucocorticoids, mineralocorticoids, and sex steroids are secreted by which gland?",
+                    options: [
+                        "Thyroid gland",
+                        "Adrenal cortex",
+                        "Anterior pituitary",
+                        "Parathyroid glands"
+                    ],
+                    correct: 1,
+                    rationale: "The glucocorticoids, mineralocorticoids, and sex steroids are secreted by the adrenal cortex. The thyroid gland produces thyroid hormone and thyrocalcitonin. The anterior pituitary produces hormones such as growth hormone, thyroid-stimulating hormone, adrenocorticotropic hormone, gonadotropin, prolactin, and melanocyte-stimulating hormone. The parathyroid glands produce parathyroid hormone."
+                },
+                {
+                    question: "Congenital adrenal hyperplasia (CAH) is suspected in a newborn because of ambiguous genitalia. The parents are appropriately upset and concerned about their childs gender. In teaching the parents about CAH, what should the nurse explain?",
+                    options: [
+                        "Reconstructive surgery as a female is preferred.",
+                        "Sexual assignment should wait until genetic sex is determined.",
+                        "Prenatal masculinization will strongly influence the childs development.",
+                        "The child should be raised as a boy because of the presence of a penis and scrotum."
+                    ],
+                    correct: 1,
+                    rationale: "It is preferable to raise the child according to genetic sex. With hormone replacement and surgical intervention if needed, genetically female children achieve satisfactory results in reversing virilism and achieving normal puberty and ability to conceive. Reconstructive surgery as a female is only preferred for infants who are genetically female. Infants who are genetically male should be given hormonal supplementation. Sex assignment and rearing depend on psychosocial influences, not on genetic sex hormone influences during fetal life. It is not advised to raise the child as a boy because of the presence of a penis and scrotum unless the child is genetically male. If a genetic female, the child will be sterile and may never be able to function satisfactorily in a heterosexual relationship."
+                },
+                {
+                    question: "What form of diabetes is characterized by destruction of pancreatic beta cells, resulting in insulin deficiency?",
+                    options: [
+                        "Type 1 diabetes",
+                        "Type 2 diabetes",
+                        "Gestational diabetes",
+                        "Maturity-onset diabetes of the young (MODY)"
+                    ],
+                    correct: 0,
+                    rationale: "Type 1 diabetes is characterized by the destruction of the pancreatic beta cells, which leads to absolute insulin deficiency. Type 2 diabetes results usually from insulin resistance. The pancreatic beta cells are not destroyed in gestational diabetes. MODY is an autosomal dominant monogenetic defect in beta cell function that is characterized by impaired insulin secretion with minimum or no defects in insulin action."
+                },
+                {
+                    question: "What statement is characteristic of type 1 diabetes mellitus?",
+                    options: [
+                        "Onset is usually gradual.",
+                        "Ketoacidosis is infrequent.",
+                        "Peak age incidence is 10 to 15 years.",
+                        "Oral agents are available for treatment."
+                    ],
+                    correct: 2,
+                    rationale: "Type 1 diabetes mellitus typically usually has its onset before the age of 20 years, with a peak incidence between ages 10 and 15 years. Type 1 has an abrupt onset, in contrast to type 2, which has a more gradual appearance. Ketoacidosis occurs when insulin is unavailable and the body uses sources other than glucose for cellular metabolism. Ketoacidosis is more common in type 1 diabetes than in type 2. At this time, oral agents are available only for type 2 diabetes."
+                },
+                {
+                    question: "What clinical manifestation is considered a cardinal sign of diabetes mellitus?",
+                    options: [
+                        "Nausea",
+                        "Seizures",
+                        "Impaired vision",
+                        "Frequent urination"
+                    ],
+                    correct: 3,
+                    rationale: "Hallmarks of diabetes mellitus are glycosuria, polyuria, and polydipsia. Nausea and seizures are not clinical manifestations of diabetes mellitus. Impaired vision is a long-term complication of the disease."
+                },
+                {
+                    question: "What blood glucose measurement is most likely associated with diabetic ketoacidosis?",
+                    options: [
+                        "185 mg/dl",
+                        "220 mg/dl",
+                        "280 mg/dl",
+                        "330 mg/dl"
+                    ],
+                    correct: 3,
+                    rationale: "Diabetic ketoacidosis is a state of relative insulin insufficiency and may include the presence of hyperglycemia, a blood glucose level greater than or equal to 330 mg/dl; 185, 220, and 280 mg/dl are values that are too low for the definition of ketoacidosis."
+                },
+                {
+                    question: "The parents of a child who has just been diagnosed with type 1 diabetes ask about exercise. What effect does exercise have on a type 1 diabetic?",
+                    options: [
+                        "Exercise increases blood glucose.",
+                        "Extra insulin is required during exercise.",
+                        "Additional snacks are needed before exercise.",
+                        "Excessive physical activity should be restricted."
+                    ],
+                    correct: 2,
+                    rationale: "Exercise lowers blood glucose levels, decreasing the need for insulin. Extra snacks are provided to maintain the blood glucose levels. Exercise is encouraged and not restricted unless indicated by other health conditions."
+                },
+                {
+                    question: "A child eats some sugar cubes after experiencing symptoms of hypoglycemia. This rapid-releasing sugar should be followed by which dietary intervention?",
+                    options: [
+                        "Sports drink and fruit",
+                        "Glass of water and crackers",
+                        "Milk and peanut butter on bread"
+                    ],
+                    correct: 2,
+                    rationale: "Symptoms of hypoglycemia are treated with a rapid-releasing sugar source followed by a complex carbohydrate and protein. Milk supplies lactose and a more prolonged action from the protein. The bread is a complex carbohydrate, which with the peanut butter provides a sustained action. The sports drink contains primarily simple carbohydrates. The fruit contains additional carbohydrates. A protein source is needed for sustained action. Crackers are a complex carbohydrate, but protein is needed to stabilize the blood sugar."
+                },
+                {
+                    question: "A 20-kg (44-lb) child in ketoacidosis is admitted to the pediatric intensive care unit. What order should the nurse not implement until clarified with the physician?",
+                    options: [
+                        "Weigh on admission and daily.",
+                        "Replace fluid volume deficit over 48 hours.",
+                        "Begin intravenous line with D5 0.45% normal saline with 20 mEq of potassium chloride.",
+                        "Give intravenous regular insulin 2 units/kg/hr after initial rehydration bolus."
+                    ],
+                    correct: 2,
+                    rationale: "The initial hydrating solution is 0.9% normal saline. Potassium is not given until the child is voiding 25 ml/hr, demonstrating adequate renal function. After initial rehydration and insulin administration, then potassium is given. Dextrose is not given until blood glucose levels are between 250 and 300 mg/dl. An accurate, current weight is essential for determination of the amount of fluid loss and as a basis for medication dosage. Replacing fluid volume deficit over 48 hours is the current recommendation in diabetic ketoacidosis in children. Cerebral edema is a risk of more rapid administration. Intravenous regular insulin 2 units/kg/hr after initial rehydration bolus is the recommended insulin administration for a child of this weight. Only regular insulin can be given intravenously, and it is given after initial fluid volume expansion."
+                },
+                {
+                    question: "What clinical manifestation occurs with hypoglycemia?",
+                    options: [
+                        "Lethargy",
+                        "Confusion",
+                        "Nausea and vomiting",
+                        "Weakness and dizziness"
+                    ],
+                    correct: 3,
+                    rationale: "Some of the clinical manifestations of hypoglycemia include weakness; dizziness; difficulty concentrating, speaking, focusing, and coordinating; sweating; and pallor. Lethargy, confusion, and nausea and vomiting are manifestations of hyperglycemia."
+                },
+                {
+                    question: "A 12-year-old girl is newly diagnosed with diabetes when she develops ketoacidosis. How should the nurse structure a successful education program?",
+                    options: [
+                        "Essential information is presented initially.",
+                        "Teaching should take place in the childs semiprivate room.",
+                        "Education is focused toward the parents because the child is too young.",
+                        "All information needed for self-management of diabetes is taught at once."
+                    ],
+                    correct: 0,
+                    rationale: "Diagnosis of type 1 diabetes can be traumatic for the child and family. Most families are not psychologically ready for the complex teaching that is needed for self-management. Most structured diabetes education programs begin with essential or survival information followed by the complex background material when the family is better able to learn. Teaching can take place either as an outpatient or as an inpatient. The actual teaching area should be free from distractions that would interfere with learning. A semiprivate room would have many individuals entering and leaving the room, causing distraction. A 12-year-old child who is cognitively age appropriate needs to be included in the educational process. Most children older than the age of 8 years can be involved in blood glucose monitoring and insulin administration. Teaching all information needed for self-management of diabetes at once would be too overwhelming for a family in crisis."
+                },
+                {
+                    question: "The nurse is discussing with a child and family the various sites used for insulin injections. What site usually has the fastest rate of absorption?",
+                    options: [
+                        "Arm",
+                        "Leg",
+                        "Buttock",
+                        "Abdomen"
+                    ],
+                    correct: 3,
+                    rationale: "The abdomen has the fastest rate of absorption but the shortest duration. The arm has a fast rate of absorption but a short duration. The leg has a slow rate of absorption but a long duration. The buttock has the slowest rate of absorption and the longest duration."
+                },
+                {
+                    question: "The nurse is teaching an adolescent about giving insulin injections. The adolescent asks if the disposable needles and syringes can be used more than once. The nurses response should be based on which knowledge?",
+                    options: [
+                        "It is unsafe.",
+                        "It is acceptable for up to 24 hours.",
+                        "It is acceptable for families with very limited resources.",
+                        "It is suitable for up to 3 days if stored in the refrigerator."
+                    ],
+                    correct: 3,
+                    rationale: "Bacterial counts are unaffected if insulin syringes are handled in an aseptic manner and stored in the refrigerator between use. The syringes can be used up to 3 days and result in a considerable cost savings. Bacterial counts remain low for up to 72 hours with proper technique. The familys resources are not an issue; if a practice is unsafe, the family should not be encouraged to endanger the child by reusing equipment."
+                },
+                {
+                    question: "A preadolescent has maintained good glycemic control of his type 1 diabetes through the school year. During summer vacation, he has had repeated episodes of hypoglycemia. What additional teaching is needed?",
+                    options: [
+                        "Carbohydrates in the diet need to be replaced with protein.",
+                        "Additional snacks are needed to compensate for increased activity.",
+                        "The child needs to decrease his activity level to minimize episodes of hypoglycemia.",
+                        "Insulin dosage should be increased to compensate for a change in activity level."
+                    ],
+                    correct: 1,
+                    rationale: "Most children have a different schedule during summer vacation. The increased activity and exercise reduce insulin resistance and increase glucose utilization. Additional snacks should be eaten before physical activity to increase carbohydrates and protein and compensate for increased activity. Physical activity should always be encouraged if the child is capable. The benefits include improved glucose utilization and decreased insulin requirements. In consultation with the practitioner, insulin dosage may need to be decreased because of improved glucose utilization."
+                },
+                {
+                    question: "To help an adolescent deal with diabetes, the nurse needs to consider which characteristic of adolescence?",
+                    options: [
+                        "Desire to be unique",
+                        "Preoccupation with the future",
+                        "Need to be perfect and similar to peers",
+                        "Awareness of peers that diabetes is a severe disease"
+                    ],
+                    correct: 2,
+                    rationale: "Adolescence is a time when the individual has a need to be perfect and similar to peers. Having diabetes makes adolescents different from their peers. Adolescents do not wish to be unique; they desire to fit in with the peer group. An adolescent is usually not future oriented. Awareness of peers that diabetes is a severe disease would further alienate the adolescent with diabetes. The peer group would focus on the differences."
+                },
+                {
+                    question: "An adolescent diabetic is admitted to the emergency department for treatment of hyperglycemia and pneumonia. What are characteristics of diabetic hyperglycemia?",
+                    options: [
+                        "Cold, clammy skin and lethargy",
+                        "Hunger and hypertension",
+                        "Thirst, being flushed, and fruity breath",
+                        "Disorientation and pallor"
+                    ],
+                    correct: 2,
+                    rationale: "The signs of hyperglycemia are thirst, being flushed, and fruity breath. The skin is not cold or clammy, and there is not hunger and hypertension. Disorientation and pallor are signs of hypoglycemia."
+                },
+                {
+                    question: "A school-age child with diabetes gets 30 units of NPH insulin at 0800. According to when this insulin peaks, the child should be at greatest risk for a hypoglycemic episode between when?",
+                    options: [
+                        "Lunch and dinner",
+                        "Breakfast and lunch",
+                        "0830 to his midmorning snack",
+                        "Bedtime and breakfast the next morning"
+                    ],
+                    correct: 0,
+                    rationale: "Intermediate-acting (NPH and Lente) insulins reach the blood 2 to 6 hours after injection. The insulins peak 4 to 14 hours later and stay in the blood for about 14 to 20 hours."
+                },
+                {
+                    question: "The nurse is teaching the parent of a preschool child how to administer the childs insulin injection. The child will be receiving 2 units of regular insulin and 12 units of NPH insulin every morning. What should the parent be taught?",
+                    options: [
+                        "Draw the insulin in separate syringes.",
+                        "Draw the regular insulin first and then the NPH into the same syringe.",
+                        "Draw the NPH insulin first and then the regular into the same syringe.",
+                        "Check blood sugar first, and if below 120, hold the regular insulin and give the NPH."
+                    ],
+                    correct: 1,
+                    rationale: "To obtain maximum benefit from mixing insulins, the recommended practice is to (1) inject the measured amount of air (equivalent to the dosage) into the long-acting insulin; (2) inject the measured amount of air into the rapid-acting (clear) insulin and, without removing the needle; (3) withdraw the clear insulin; and (4) insert the needle (already containing the clear insulin) into the long-acting (cloudy) insulin and then withdraw the desired amount. The blood sugar may be checked before giving the insulin, but the prescribed dose should not be withheld if the blood sugar is 120."
+                },
+                {
+                    question: "What statement applies to the current focus of the dietary management of children with diabetes?",
+                    options: [
+                        "Measurement of all servings of food is vital for control.",
+                        "Daily calculate specific amounts of carbohydrates, fats, and proteins.",
+                        "The number of calories for carbohydrates remains constant on a daily basis; protein and fat calories are liberal.",
+                        "The intake ensures day-to-day consistency in total calories, protein, carbohydrates, and moderate fat while allowing for a wide variety of foods."
+                    ],
+                    correct: 3,
+                    rationale: "Essentially the nutritional needs of children with diabetes are no different from those of healthy children. Children with diabetes need no special foods or supplements. They need sufficient calories to balance daily expenditure for energy and to satisfy the requirement for growth and development."
+                },
+                {
+                    question: "During the summer many children are more physically active. What changes in the management of the child with diabetes should be expected as a result of more exercise?",
+                    options: [
+                        "Increased food intake",
+                        "Increased risk of hyperglycemia",
+                        "Increased risk of insulin reaction"
+                    ],
+                    correct: 0,
+                    rationale: "Exercise is encouraged and never restricted unless indicated by other health conditions. Exercise lowers blood glucose levels, depending on the intensity and duration of the activity. Consequently, exercise should be included as part of diabetes management, and the type and amount of exercise should be planned around the childs interests and capabilities. However, in most instances, childrens activities are unplanned, and the resulting decrease in blood glucose can be compensated for by providing extra snacks before (and, if the exercise is prolonged, during) the activity. In addition to a feeling of well-being, regular exercise aids in utilization of food and often results in a reduction of insulin requirements."
+                },
+                {
+                    question: "Prolonged steroid therapy has caused a child to have Cushing syndrome. To lessen the cushingoid effects, the steroid should be administered at which time?",
+                    options: [
+                        "In the PM",
+                        "After lunch",
+                        "QD in the AM",
+                        "QOD in the AM"
+                    ],
+                    correct: 3,
+                    rationale: "When cushingoid features are caused by steroid therapy, the effects may be lessened with administration of the drug early in the morning and on an alternate-day basis. Giving the drug early in the day maintains the normal diurnal pattern of cortisol secretion. If given during the evening, it is more likely to produce symptoms because endogenous cortisol levels are normally low and the additional supply exerts more pronounced effects. An alternate-day schedule allows the anterior pituitary an opportunity to maintain more normal hypothalamic-pituitary-adrenal control mechanisms."
+                },
+                {
+                    question: "The thyroid-stimulating hormone (TSH) increases secretion in response to which hormone?",
+                    options: [
+                        "Low levels of circulating thyroid hormone",
+                        "High levels of circulating thyroid hormone",
+                        "Low levels of circulating adrenocorticotropic hormone",
+                        "High levels of circulating adrenocorticotropic hormone"
+                    ],
+                    correct: 0,
+                    rationale: "As blood concentrations of the target hormones reach normal levels, a negative message is sent to the anterior pituitary to inhibit release of the tropic hormone. For example, TSH responds to low levels of circulating TH. As blood levels of TH reach normal concentrations, a negative feedback message is sent to the anterior pituitary, resulting in diminished release of TSH. Adrenocorticotropic stimulates the adrenals to secrete glucocorticoids."
+                },
+                {
+                    question: "The nurse is caring for an adolescent with anorexia nervosa. What pituitary dysfunction should the nurse assess for in the adolescent?",
+                    options: [
+                        "Hypopituitarism",
+                        "Pituitary hyperfunction",
+                        "Hyperplasia of the pituitary cells",
+                        "Overproduction of the anterior pituitary hormones"
+                    ],
+                    correct: 0,
+                    rationale: "Anorexia nervosa can cause hypopituitarism. It does not cause the hyperfunction of the pituitary, hyperplasia of the pituitary cells, or overproduction of the anterior pituitary hormones."
+                },
+                {
+                    question: "The clinic nurse is assessing a child with hypopituitarism. Hypopituitarism can lead to which disorder?",
+                    options: [
+                        "Gigantism",
+                        "Hyperthyroidism",
+                        "Cushing syndrome",
+                        "Growth hormone deficiency"
+                    ],
+                    correct: 3,
+                    rationale: "Hypopituitarism can lead to a growth hormone deficiency. An overproduction of the anterior pituitary hormones can result in gigantism (caused by excess growth hormone production during childhood), hyperthyroidism, or hypercortisolism (Cushing syndrome)."
+                },
+                {
+                    question: "The nurse is assisting with a growth hormone stimulation test for a child with short stature. What should the nurse monitor closely on this child during the test?",
+                    options: [
+                        "Hypotension",
+                        "Tachycardia",
+                        "Hypoglycemia",
+                        "Nausea and vomiting"
+                    ],
+                    correct: 0,
+                    rationale: "Patients receiving clonidine (Catapres) for a growth hormone stimulation test require close blood pressure monitoring for hypotension. Tachycardia, hypoglycemia, and nausea and vomiting do not occur with Catapres administered for a growth hormone stimulation test."
+                },
+                {
+                    question: "The nurse is preparing to administer a prescribed dose of desmopressin acetate (DDAVP) intramuscularly (IM) to a child with diabetes insipidus. What action should the nurse take before drawing the medication into a syringe?",
+                    options: [
+                        "Mix the medication with sterile water.",
+                        "Mix the medication with sterile normal saline.",
+                        "Have another nurse double-check the medication dose.",
+                        "Hold the medication under warm water for 10 to 15 minutes and then shake vigorously."
+                    ],
+                    correct: 3,
+                    rationale: "To be effective, vasopressin must be thoroughly mixed in the oil by being held under warm running water for 10 to 15 minutes and shaken vigorously before being drawn into the syringe. If this is not done, the oil may be injected minus the antidiuretic hormone. Small brown particles, which indicate drug dispersion, must be seen in the suspension."
+                },
+                {
+                    question: "The nurse is taking care of a child who had a thyroidectomy. The nurse recognizes what as a positive Chvostek sign?",
+                    options: [
+                        "Paresthesia occurring in feet and toes",
+                        "Frequent sharp flexion of wrist and ankle joints",
+                        "Carpal spasm elicited by pressure applied to the nerves of the upper arm",
+                        "Facial muscle spasm elicited by tapping the facial nerve in the region of the parotid gland"
+                    ],
+                    correct: 3,
+                    rationale: "A positive Chvostek sign is a facial muscle spasm that is elicited by tapping the facial nerve in the region of the parotid gland. Paresthesia occurring in the feet and toes and frequent sharp flexion of the wrist and ankle joints can be signs of hypoparathyroidism but are not part of a positive Chvostek sign. Carpal spasm elicited by pressure applied to nerves of the upper arm is called a positive Trousseau sign."
+                },
+                {
+                    question: "A child is having tests done to determine parathyroid function. The clinic nurse knows that the parathyroid hormone (PTH) regulates the homeostasis of what in the serum?",
+                    options: [
+                        "Sodium",
+                        "Calcium",
+                        "Potassium",
+                        "Magnesium"
+                    ],
+                    correct: 1,
+                    rationale: "The parathyroid glands secrete PTH. Along with vitamin D and calcitonin, PTH regulates the homeostasis of serum calcium concentrations."
+                },
+                {
+                    question: "The nurse is caring for a child after a parathyroidectomy. What medication should the nurse have available if hypocalcemia occurs?",
+                    options: [
+                        "Insulin",
+                        "Calcium gluconate",
+                        "Propylthiouracil (PTU)",
+                        "Cortisone (hydrocortisone)"
+                    ],
+                    correct: 1,
+                    rationale: "Because hypocalcemia is a potential complication after a parathyroidectomy, observing for signs of tetany, instituting seizure precautions, and having calcium gluconate available for emergency use are part of the nursing care."
+                }
+            ],
+            
+            'multiple-response': [
+                {
+                    question: "The nurse is preparing a community outreach program for adolescents about the characteristic differences between type 1 and type 2 diabetes mellitus (DM). What concepts should the nurse include? (Select all that apply.)",
+                    options: [
+                        "Type 1 DM has an abrupt onset.",
+                        "Type 1 DM is often controlled with oral glucose agents.",
+                        "Type 1 DM occurs primarily in whites.",
+                        "Type 2 DM always requires insulin therapy.",
+                        "Type 2 DM frequently has a familial history.",
+                        "Type 2 DM occurs in people who are overweight."
+                    ],
+                    correct: [0, 2, 4, 5],
+                    rationale: "Characteristics of type 1 DM include having an abrupt onset, primarily occurring in whites, and not being controlled with oral glucose agents (insulin is required for therapy). Type 2 DM frequently has a familial history, occurs in people who are overweight, and does not always require insulin therapy (it is used in 20% to 30% of patients)."
+                },
+                {
+                    question: "The nurse is preparing to admit a 9-year-old child with syndrome of inappropriate antidiuretic hormone (SIADH). What interventions should the nurse include in the childs care plan? (Select all that apply.)",
+                    options: [
+                        "Provide a low-sodium, low-fat diet.",
+                        "Initiate seizure precautions.",
+                        "Weigh daily at the same time each day.",
+                        "Encourage intake of 1 l of fluid per day.",
+                        "Measure intake and output hourly."
+                    ],
+                    correct: [1, 2, 4],
+                    rationale: "Nursing care of the child with SIADH includes placing the child on seizure precautions, obtaining a daily weight at the same time each day, and accurately measuring the childs intake and output. The nurse does not need to provide a low-sodium, low-fat diet because there are no diet restrictions. The child would be on fluid precautions to avoid fluid overload, so 1 l of fluid would not be encouraged."
+                },
+                {
+                    question: "The nurse is planning to admit a 14-year-old adolescent with Cushing syndrome. What clinical manifestations should the nurse expect to observe in this child? (Select all that apply.)",
+                    options: [
+                        "Truncal obesity",
+                        "Decreased pubic hair",
+                        "Petechial hemorrhage",
+                        "Hyperpigmentation of elbows",
+                        "Facial plethora",
+                        "Headache and weakness"
+                    ],
+                    correct: [0, 2, 4],
+                    rationale: "Clinical manifestations of Cushing syndrome include truncal obesity, petechial hemorrhage, and facial plethora. Decreased pubic and axillary hair; hyperpigmentation of elbows, knees, and wrists; and headache and weakness are clinical manifestations of adrenocortical insufficiency."
+                },
+                {
+                    question: "The nurse is teaching the family of a child with type 1 diabetes about insulin. What should the nurse include in the teaching session? (Select all that apply.)",
+                    options: [
+                        "Unopened vials are good for 60 days.",
+                        "Diabetic supplies should not be left in a hot environment.",
+                        "Insulin can be placed in the freezer if not used every day.",
+                        "After it has been opened, insulin is good for up to 28 to 30 days.",
+                        "Insulin bottles that have been opened should be stored at room temperature or refrigerated."
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "Insulin bottles that have been opened (i.e., the stopper has been punctured) should be stored at room temperature or refrigerated for up to 28 to 30 days. After 1 month, these vials should be discarded. Unopened vials should be refrigerated and are good until the expiration date on the label. Diabetic supplies should not be left in a hot environment. Insulin need not be refrigerated but should be maintained at a temperature between 15 and 29.5 C (59 and 85 F). Freezing renders insulin inactive."
+                },
+                {
+                    question: "The nurse is caring for a child with an anterior pituitary tumor. What hormones are secreted by the anterior pituitary? (Select all that apply.)",
+                    options: [
+                        "Oxytocin",
+                        "Luteinizing hormone",
+                        "Antidiuretic hormone",
+                        "Thyroid-stimulating hormone",
+                        "Adrenocorticotrophic hormone"
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "The anterior pituitary is responsible for secreting the following hormones: growth hormone, thyroid-stimulating hormone, adrenocorticotrophic hormone, follicle-stimulating hormone, luteinizing hormone, and prolactin. The posterior pituitary secretes antidiuretic hormone and oxytocin."
+                },
+                {
+                    question: "The nurse is preparing to assist with a growth hormone provocative test for a child with short stature. The nurse recognizes that which pharmacologics should be used to provoke the release of growth hormone (GH)? (Select all that apply.)",
+                    options: [
+                        "Larodopa (levodopa)",
+                        "Clonidine (Catapres)",
+                        "Propranolol (Inderal)",
+                        "Cortisone (hydrocortisone)",
+                        "Biosynthetic growth hormone"
+                    ],
+                    correct: [0, 1, 2],
+                    rationale: "GH stimulation, or provocative testing, involves the use of pharmacologics to provoke the release of GH either directly or indirectly. Provocative testing involves the use of neuromodulators such as levodopa or agents such as clonidine, arginine, insulin, propranolol, or glucagon followed by the measurement GH blood levels. Cortisone is given to replace hormone deficiencies that can occur with GH deficiency. Biosynthetic GH is used to treat GH deficiency."
+                },
+                {
+                    question: "The clinic nurse is assessing a child with central precocious puberty. What conditions can cause central precocious puberty? (Select all that apply.)",
+                    options: [
+                        "Trauma",
+                        "Neoplasms",
+                        "Radiotherapy",
+                        "Exogenous sex hormones",
+                        "Primary hypothyroidism"
+                    ],
+                    correct: [0, 1, 2],
+                    rationale: "Trauma, neoplasms, and radiotherapy can be the cause of central precocious puberty. Exogenous sex hormones and primary hypothyroidism can cause peripheral precocious puberty."
+                },
+                {
+                    question: "The nurse is planning to admit a 10-year-old child with syndrome of inappropriate antidiuretic hormone (SIADH). What clinical manifestations should the nurse expect to observe in this child? (Select all that apply.)",
+                    options: [
+                        "Polyuria",
+                        "Anorexia",
+                        "Polydipsia",
+                        "Irritability",
+                        "Stomach cramps"
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "Clinical signs of SIADH are directly related to fluid retention and hyponatremia. When cells in the brain are exposed to too much water as opposed to sodium, swelling occurs. When serum sodium levels are diminished to 120-129 mEq/l, affected children may display anorexia, nausea, vomiting, stomach cramps, irritability, and personality changes. Polyuria and polydipsia are manifestations of diabetes insipidus."
+                },
+                {
+                    question: "The nurse is planning to admit a 12-year-old with Graves disease (GD). What clinical manifestations should the nurse expect to observe in this child? (Select all that apply.)",
+                    options: [
+                        "Insomnia",
+                        "Irritability",
+                        "Tonic rigidity",
+                        "Hyperactivity",
+                        "Muscle cramps"
+                    ],
+                    correct: [0, 1, 3],
+                    rationale: "Signs and symptoms of hyperthyroidism develop gradually, with an interval between onset and diagnosis of approximately 6 to 12 months. Clinical features include irritability, hyperactivity, short attention span, tremors, insomnia, and emotional lability. Tonic rigidity and muscle cramps are signs of hypoparathyroidism."
+                },
+                {
+                    question: "The nurse is planning to admit an 8-year-old child with hypoparathyroidism. What clinical manifestations should the nurse expect to observe in this child? (Select all that apply.)",
+                    options: [
+                        "Muscle cramps",
+                        "Positive Chvostek sign",
+                        "Emotional lability",
+                        "Laryngeal spasms",
+                        "Short attention span"
+                    ],
+                    correct: [0, 1, 3],
+                    rationale: "Clinical manifestations of hypoparathyroidism include muscle cramps, positive Chvostek sign, and laryngeal spasms. Emotional lability and short attention span are signs of Graves disease."
+                },
+                {
+                    question: "What are characteristics of diabetic ketoacidosis? (Select all that apply.)",
+                    options: [
+                        "Pallor",
+                        "Acidosis",
+                        "Bradypnea",
+                        "Dehydration",
+                        "Electrolyte imbalance"
+                    ],
+                    correct: [1, 3, 4],
+                    rationale: "Characteristics of diabetic ketoacidosis include acidosis, dehydration, and electrolyte imbalance. Respirations are rapid (Kussmaul respirations), not slow, and flushing, not pallor, would occur."
+                },
+                {
+                    question: "The nurse is preparing to admit a 7-year-old child with type 2 diabetes. What clinical features of type 2 diabetes should the nurse recognize? (Select all that apply.)",
+                    options: [
+                        "Oral agents are effective.",
+                        "Insulin is usually needed.",
+                        "Ketoacidosis is infrequent.",
+                        "Diet only is often effective.",
+                        "Chronic complications frequently occur."
+                    ],
+                    correct: [0, 2, 3],
+                    rationale: "The clinical features of type 2 diabetes include the following: oral agents are effective, ketoacidosis is infrequent, and diet only is often effective. Insulin is only needed in 20% to 30% of cases and chronic complications occur infrequently."
+                },
+                {
+                    question: "The nurse is planning to admit a 14-year-old adolescent with hyperparathyroidism. What clinical manifestations should the nurse expect to observe in this patient? (Select all that apply.)",
+                    options: [
+                        "Polyuria",
+                        "Diarrhea",
+                        "Hypotension",
+                        "Vague bone pain",
+                        "Paresthesia in extremities"
+                    ],
+                    correct: [0, 3, 4],
+                    rationale: "Clinical manifestations of hyperparathyroidism include polyuria, vague bone pain, and paresthesia in the extremities. Constipation, not diarrhea, and hypertension, not hypotension, are manifestations of hyperparathyroidism."
+                }
+            ],
+            
+            'dosage-calc': [
+                {
+                    question: "The health care provider has prescribed leuprolide acetate (Lupron Depot) 0.2 mg/kg IM every 4 weeks for a child with precocious puberty. The child weighs 55 lb. Calculate the dose the nurse should administer in milligrams.",
+                    options: [
+                        "4 mg",
+                        "5 mg",
+                        "6 mg",
+                        "7 mg"
+                    ],
+                    correct: 1,
+                    rationale: "55 lb ÷ 2.2 = 25 kg. Dose = 0.2 mg/kg × 25 kg = 5 mg"
+                },
+                {
+                    question: "The health care provider has prescribed desmopressin acetate (DDAVP) 0.05 mg/kg/day PO divided twice daily for a child with diabetes insipidus. The child weighs 88 lb. The nurse is preparing to administer the 0900 dose. Calculate the dose in milligrams.",
+                    options: [
+                        "0.5 mg",
+                        "1 mg",
+                        "1.5 mg",
+                        "2 mg"
+                    ],
+                    correct: 1,
+                    rationale: "88 lb ÷ 2.2 = 40 kg. Total daily dose = 0.05 mg/kg × 40 kg = 2 mg/day. Divided bid → per dose = 2 mg ÷ 2 = 1 mg"
+                },
+                {
+                    question: "The health care provider has prescribed levothyroxine (Synthroid) 4 mcg/kg/day PO for a child with hypothyroidism. The child weighs 77 lb. Calculate the daily dose in micrograms.",
+                    options: [
+                        "130 mcg",
+                        "140 mcg",
+                        "150 mcg",
+                        "160 mcg"
+                    ],
+                    correct: 1,
+                    rationale: "77 lb ÷ 2.2 = 35 kg. Dose = 4 mcg/kg × 35 kg = 140 mcg/day"
+                },
+                {
+                    question: "The health care provider has prescribed propylthiouracil (PTU) 7 mg/kg/day PO divided every 12 hours for a child with Graves disease. The child weighs 66 lb. Calculate the dose in milligrams for one dose.",
+                    options: [
+                        "100 mg",
+                        "105 mg",
+                        "110 mg",
+                        "115 mg"
+                    ],
+                    correct: 1,
+                    rationale: "66 lb ÷ 2.2 = 30 kg. Total daily dose = 7 mg/kg × 30 kg = 210 mg/day. Divided q12h → per dose = 210 mg ÷ 2 = 105 mg"
+                },
+                {
+                    question: "A health care provider prescribes hydrocortisone (Solu-Cortef) 200 mg IV STAT for a child with acute adrenocortical insufficiency. The medication label states Solu-Cortef 100 mg/2 ml. How many milliliters will the nurse prepare to administer one dose?",
+                    options: [
+                        "2 ml",
+                        "3 ml",
+                        "4 ml",
+                        "5 ml"
+                    ],
+                    correct: 2,
+                    rationale: "Volume = (200 mg ÷ 100 mg) × 2 ml = 2 × 2 ml = 4 ml"
+                }
+            ],
+            
+            'all': []
+        };
+
+        // Combine all questions for the 'all' section
+        sections['all'] = [
+            ...sections['multiple-choice'].map(q => ({...q, section: 'multiple-choice'})),
+            ...sections['multiple-response'].map(q => ({...q, section: 'multiple-response'})),
+            ...sections['dosage-calc'].map(q => ({...q, section: 'dosage-calc'}))
+        ];
+
+        let currentSection = 'multiple-choice';
+        let currentQuestion = 0;
+        let selectedOption = null;
+        let selectedOptions = [];
+        let isSubmitted = false;
+        let answers = {
+            'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+            'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+            'dosage-calc': Array(sections['dosage-calc'].length).fill(null),
+            'all': Array(sections['all'].length).fill(null)
+        };
+
+        function setSection(section) {
+            currentSection = section;
+            currentQuestion = 0;
+            selectedOption = null;
+            selectedOptions = [];
+            isSubmitted = false;
+            
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadQuestion();
+        }
+
+        function isMultipleResponseQuestion() {
+            if (currentSection === 'all') {
+                const questionData = getCurrentQuestionData();
+                return questionData?.section === 'multiple-response' || Array.isArray(questionData?.correct);
+            }
+            return currentSection === 'multiple-response';
+        }
+
+        function getCurrentQuestionData() {
+            if (currentSection === 'all') {
+                return sections['all'][currentQuestion] || null;
+            } else {
+                return sections[currentSection][currentQuestion];
+            }
+        }
+
+        function loadQuestion() {
+            const questionData = getCurrentQuestionData();
+            
+            if (!questionData) return;
+            
+            const isMultipleResponse = isMultipleResponseQuestion();
+            
+            // Update UI elements visibility
+            document.getElementById('multipleSelectIndicator').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('multipleSelectInstructions').style.display = isMultipleResponse ? 'block' : 'none';
+            document.getElementById('cancelBtn').classList.remove('show');
+            document.getElementById('submitBtn').style.display = isMultipleResponse ? 'flex' : 'none';
+            document.getElementById('questionNumber').textContent = currentQuestion + 1;
+            
+            let totalQuestions = getTotalQuestions();
+            
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('counter').textContent = `${currentQuestion + 1}/${totalQuestions}`;
+            
+            document.getElementById('question').textContent = questionData.question;
+            loadOptions(questionData);
+            
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('rationale').classList.remove('show');
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            const isLastQuestion = currentQuestion >= totalQuestions - 1;
+            document.getElementById('nextBtn').textContent = isLastQuestion ? 'Finish ➡️' : 'Next ➡️';
+            document.getElementById('nextBtn').disabled = true;
+            
+            // Load saved answer state
+            const storedAnswer = answers[currentSection][currentQuestion];
+            if (storedAnswer !== null && storedAnswer !== undefined) {
+                if (isMultipleResponse) {
+                    selectedOptions = storedAnswer.selected || [];
+                    isSubmitted = storedAnswer.submitted || false;
+                    
+                    if (isSubmitted) {
+                        showFeedbackForMultipleResponse(questionData);
+                        document.getElementById('nextBtn').disabled = false;
+                        document.getElementById('submitBtn').disabled = true;
+                    } else {
+                        highlightSelectedOptionsForMultipleResponse();
+                        document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+                        document.getElementById('nextBtn').disabled = false;
+                        if (selectedOptions.length > 0) {
+                            document.getElementById('cancelBtn').classList.add('show');
+                        }
+                    }
+                } else {
+                    selectedOption = storedAnswer;
+                    highlightSelectedOption(storedAnswer, questionData);
+                    showFeedback(storedAnswer, questionData);
+                    document.getElementById('nextBtn').disabled = false;
+                    document.getElementById('cancelBtn').classList.add('show');
+                }
+            } else {
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                if (isMultipleResponse) {
+                    document.getElementById('submitBtn').disabled = true;
+                }
+            }
+        }
+
+        function loadOptions(questionData) {
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            if (questionData.options && questionData.options.length > 0) {
+                questionData.options.forEach((option, index) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.innerHTML = `
+                        <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                        <div class="option-text">${option}</div>
+                    `;
+                    optionElement.onclick = () => selectOption(index, questionData);
+                    optionsContainer.appendChild(optionElement);
+                });
+            } else {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
+                    <div class="option-letter">A</div>
+                    <div class="option-text">No options available for this question</div>
+                `;
+                optionsContainer.appendChild(optionElement);
+            }
+        }
+
+        function selectOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                handleMultipleResponseSelect(index, questionData);
+            } else {
+                handleSingleSelect(index, questionData);
+            }
+        }
+
+        function handleSingleSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            answers[currentSection][currentQuestion] = index;
+            selectedOption = index;
+            
+            highlightSelectedOption(index, questionData);
+            showFeedback(index, questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.add('show');
+        }
+
+        function handleMultipleResponseSelect(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            if (isSubmitted) return;
+            
+            const optionIndex = selectedOptions.indexOf(index);
+            if (optionIndex === -1) {
+                selectedOptions.push(index);
+            } else {
+                selectedOptions.splice(optionIndex, 1);
+            }
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].selected = selectedOptions;
+            answers[currentSection][currentQuestion].submitted = false;
+            
+            document.getElementById('submitBtn').disabled = selectedOptions.length === 0;
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('cancelBtn').classList.toggle('show', selectedOptions.length > 0);
+        }
+
+        function highlightSelectedOption(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                
+                if (i === index) {
+                    if (i === questionData.correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        if (questionData.correct !== undefined) {
+                            options[questionData.correct].classList.add('correct');
+                        }
+                    }
+                }
+            });
+        }
+
+        function highlightSelectedOptionsForMultipleResponse() {
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (selectedOptions.includes(i)) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (selectedOptions.length === 0) return;
+            
+            isSubmitted = true;
+            
+            if (!answers[currentSection][currentQuestion]) {
+                answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+            }
+            answers[currentSection][currentQuestion].submitted = true;
+            
+            const questionData = getCurrentQuestionData();
+            showFeedbackForMultipleResponse(questionData);
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('cancelBtn').classList.remove('show');
+        }
+
+        function showFeedback(index, questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            if (index === questionData.correct) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Correct! Well done.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                const correctLetter = String.fromCharCode(65 + questionData.correct);
+                feedbackText.textContent = `Incorrect. Correct: ${correctLetter}`;
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function showFeedbackForMultipleResponse(questionData) {
+            if (!questionData) questionData = getCurrentQuestionData();
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackText = document.getElementById('feedbackText');
+            const rationale = document.getElementById('rationale');
+            const rationaleText = document.getElementById('rationaleText');
+            
+            const allCorrectSelected = questionData.correct.every(c => selectedOptions.includes(c));
+            const noIncorrectSelected = selectedOptions.every(s => questionData.correct.includes(s));
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                if (questionData.correct.includes(i)) {
+                    option.classList.add('correct');
+                }
+                if (selectedOptions.includes(i) && !questionData.correct.includes(i)) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback correct';
+                feedbackIcon.textContent = '✅';
+                feedbackText.textContent = 'Perfect! All correct selected.';
+            } else if (allCorrectSelected && !noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Almost! All correct + some incorrect.';
+            } else if (!allCorrectSelected && noIncorrectSelected) {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '⚠️';
+                feedbackText.textContent = 'Partially correct! Some correct, missed others.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackIcon.textContent = '❌';
+                feedbackText.textContent = 'Incorrect. Missed correct & selected incorrect.';
+            }
+            
+            feedback.style.display = 'flex';
+            rationaleText.textContent = questionData.rationale;
+            rationale.classList.add('show');
+        }
+
+        function cancelSelection() {
+            const questionData = getCurrentQuestionData();
+            
+            if (isMultipleResponseQuestion()) {
+                selectedOptions = [];
+                isSubmitted = false;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                if (answers[currentSection][currentQuestion]) {
+                    answers[currentSection][currentQuestion] = {selected: [], submitted: false};
+                }
+                
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('cancelBtn').classList.remove('show');
+            } else {
+                answers[currentSection][currentQuestion] = null;
+                selectedOption = null;
+                
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                document.getElementById('feedback').style.display = 'none';
+                document.getElementById('rationale').classList.remove('show');
+                document.getElementById('nextBtn').disabled = true;
+                document.getElementById('cancelBtn').classList.remove('show');
+            }
+        }
+
+        function nextCard() {
+            const totalQuestions = getTotalQuestions();
+            
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                loadQuestion();
+            } else {
+                let correctCount = 0;
+                let totalAnswered = 0;
+                
+                Object.keys(answers).forEach(section => {
+                    answers[section].forEach((answer, index) => {
+                        if (answer !== null && answer !== undefined) {
+                            totalAnswered++;
+                            const questionData = getQuestionData(section, index);
+                            
+                            if (Array.isArray(questionData?.correct)) {
+                                if (answer.submitted && Array.isArray(answer.selected)) {
+                                    const allCorrect = questionData.correct.every(c => answer.selected.includes(c));
+                                    const noIncorrect = answer.selected.every(s => questionData.correct.includes(s));
+                                    if (allCorrect && noIncorrect) correctCount++;
+                                }
+                            } else {
+                                if (answer === questionData?.correct) correctCount++;
+                            }
+                        }
+                    });
+                });
+                
+                alert(`Quiz completed!\n\nAnswered: ${totalAnswered}\nCorrect: ${correctCount}\n\nClick OK to restart.`);
+                
+                currentSection = 'multiple-choice';
+                currentQuestion = 0;
+                selectedOption = null;
+                selectedOptions = [];
+                isSubmitted = false;
+                answers = {
+                    'multiple-choice': Array(sections['multiple-choice'].length).fill(null),
+                    'multiple-response': Array(sections['multiple-response'].length).fill({selected: [], submitted: false}),
+                    'dosage-calc': Array(sections['dosage-calc'].length).fill(null),
+                    'all': Array(sections['all'].length).fill(null)
+                };
+                
+                setSection('multiple-choice');
+            }
+        }
+
+        function previousCard() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                const storedAnswer = answers[currentSection][currentQuestion];
+                
+                if (isMultipleResponseQuestion()) {
+                    selectedOptions = storedAnswer?.selected || [];
+                    isSubmitted = storedAnswer?.submitted || false;
+                } else {
+                    selectedOption = storedAnswer;
+                }
+                
+                loadQuestion();
+            }
+        }
+
+        function getTotalQuestions() {
+            if (currentSection === 'all') {
+                return sections['all'].length;
+            } else {
+                return sections[currentSection].length;
+            }
+        }
+
+        function getQuestionData(section, index) {
+            if (section === 'all') {
+                return sections['all'][index];
+            } else {
+                return sections[section][index];
+            }
+        }
+
+        // Initialize
+        setSection('multiple-choice');
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key >= '1' && event.key <= '5') {
+                const index = parseInt(event.key) - 1;
+                const questionData = getCurrentQuestionData();
+                selectOption(index, questionData);
+            } else if (event.key >= 'a' && event.key <= 'e') {
+                const index = event.key.charCodeAt(0) - 97;
+                const questionData = getCurrentQuestionData();
+                selectOption(index, questionData);
+            } else if (event.key === 'Enter' && isMultipleResponseQuestion()) {
+                if (selectedOptions.length > 0 && !isSubmitted) {
+                    submitAnswer();
+                }
+            } else if (event.key === 'ArrowLeft') {
+                if (!document.getElementById('prevBtn').disabled) {
+                    previousCard();
+                }
+            } else if (event.key === 'ArrowRight') {
+                if (!document.getElementById('nextBtn').disabled) {
+                    nextCard();
+                }
+            } else if (event.key === ' ' || event.key === 'Spacebar') {
+                if (!document.getElementById('nextBtn').disabled && !isMultipleResponseQuestion()) {
+                    nextCard();
+                }
+            } else if (event.key === 'Escape') {
+                cancelSelection();
+            }
+        });
+    </script>
+</body>
+</html>
